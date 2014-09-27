@@ -1,0 +1,282 @@
+\documentclass[12pt,CJK,red]{beamer}
+\include{./part/usepackage}
+
+\usepackage{wasysym}
+\begin{document}
+\begin{CJK*}{GBK}{kai}
+\include{./part/makeatletter}
+
+
+\title{基于元胞自动机的货币局部转移规则}
+\subtitle{2010东北三省数学建模校级答辩}
+%Validate Dynamics Equation of Variable Mass Systems Base on Experimental Data
+\author[任嘉佳]{任嘉佳}
+
+
+\institute[]{任嘉佳，马广才，周吕文}
+\date{\today}
+\subject{Computer Tools, TeX, Slide}
+\titlegraphic{\pgfuseimage{title}}
+
+\AtBeginSection[]{ % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{Outline}
+    \tableofcontents[current,currentsubsection]
+  }
+}
+
+
+
+\begin{document}
+\begin{CJK*}{GBK}{kai}
+
+
+\frame[plain]{\titlepage} % 产生主题页，plain选项表示不显示页眉页脚等内容
+
+
+\section{问题重述}
+\frame{\frametitle{封闭系统货币交易问题}
+\begin{itemize}
+\item \textbf{封闭系统}:$N$个人构成,每人有$m$单位的货币量.
+\item \textbf{货币守恒}:在整个过程中总的货币量保持不变．
+\item \textbf{交易规则}:货币通过交易实现转移.试给出两种交易规则.
+\item \textbf{货币分布}:每个规则下，进行充分长时间后的货币分布情况.
+\end{itemize}
+
+}
+
+\section{本文研究步骤}
+\frame[<+->]{
+  \frametitle{待解决问题}
+
+\begin{itemize}
+\item 研究已有的货币转移规则,并对其进行改进．
+
+\item
+基于已有的货币的优缺点，建立的元胞自动机模型研究局部的货币转移．
+
+\end{itemize}
+}
+
+
+\section{已有货币转移规则}
+\frame[<+->]{
+  \frametitle{交易过程}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig01.pdf}　
+  \end{center}
+}
+
+\frame{
+  \frametitle{持有时间}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig02.pdf}　
+  \end{center}
+}
+
+
+\frame[<+->]{
+  \frametitle{具体规则}
+
+已有的货币转移规则：
+
+ \begin{itemize}
+ \item \textbf{规则一}：每次交易过程中，任意选出两个交易者 $i$ 和 $j$，将
+他们之间的货币交易量记为 $\Delta S$，则交易量为
+\[
+\Delta S = \frac{1}{2}\varepsilon(m_i+m_j)
+\]
+ \item \textbf{规则二}：限制交易者的货币量足够交易时才能交易.
+ \item \textbf{规则三}：有保存进行交易存储率。存储率分为定值 ($s=s_i=s_j$) 和随机值两种．
+  \end{itemize}
+ }
+
+\frame[<+->]{
+  \frametitle{具体规则}
+  对已有的货币转移规则的改进：
+
+ \begin{itemize}
+ \item \textbf{规则四}：每次参与的交易者大于等于两个，假设某次交易有$k$个交易者，因此参照已有规则．我们有以下交易规则：
+\[
+m_i(t+1)=m_i(t)+\varepsilon\Big(\sum_k^{i=1}m_i(t)\Big)
+\]
+其中$\varepsilon_i=\xi_i-\frac{1}{k}\sum_{i=1}^k\xi_i$，$\xi_i$
+为[0,1]间随机正数．
+ \end{itemize}
+ }
+
+\subsection{结果}
+
+\frame[<+->]{
+  \frametitle{规则一：$1.5\times10^4$次交易后的货币分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig03.pdf}　
+  \end{center}
+}
+
+\frame[<+->]{
+  \frametitle{规则一：$1.5\times10^4$次交易后持有时间分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig04.pdf}　
+  \end{center}
+}
+
+
+\frame[<+->]{
+  \frametitle{规则二：不同的交易次数货币量的分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig05.pdf}　
+  \end{center}
+}
+
+
+\frame[<+->]{
+  \frametitle{规则三：S=0.5时,货币交易量分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig06.pdf}　
+  \end{center}
+}
+
+\frame[<+->]{
+  \frametitle{规则三:$s$不同时的货币交易量分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig07.pdf}　
+  \end{center}
+}
+
+\frame[<+->]{
+  \frametitle{规则三:不同人的存储率不同货币量分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig08.pdf}　
+  \end{center}
+}
+
+\frame[<+->]{
+  \frametitle{规则二和规则四货币量交易分布对比}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig09.pdf}　
+  \end{center}
+}
+
+\subsection{已有规则的优缺点}
+
+\frame[<+->]{
+  \frametitle{已有规则的优缺点}
+  模型的优点：
+
+\begin{description}
+\item[\ \ \smiley]模型简单，结果能说明一定的问题．
+\end{description}
+
+模型的缺点：
+
+\begin{description}
+\item[\frownie]同一时间，只能有一组交易进行．
+
+\item[\frownie]系统内任何两人之间均可能发生交易.
+\end{description}
+}
+
+
+
+
+
+
+\section{元胞自动机模型}
+
+\frame[<+->]{
+  \frametitle{元胞自动机模型}
+  由于地理以及其它条件的限制和约束，交换只发生在局部．考虑到模型一的这种缺陷，本文建立了元胞自动机模型.
+
+  \begin{center}
+  \includegraphics[width=0.4\textwidth]{./figure/fig10.pdf}　
+  \end{center}
+}
+
+\frame[<+->]{
+  \frametitle{元胞自动机模型}
+假设该人和它的某个邻
+居的货币量分别为$m_{ij}$和$m_{ij+1}$，则它们间的货币交易量和交易规则可描述为
+
+\[\Delta S=\frac{1}{2}\varepsilon\Big(\xi>p_{ij}\Big)\Big(m_{ij}+m_{ij+1}\Big)
+\]
+
+\[m_{ij}(t+1)=m_{ij}(t)+\Delta S
+\]
+
+\[m_{ij+1}(t+1)=m_{ij+1}(t)-\Delta S
+\]
+
+其中 $\xi$ 是区间 $[0,1]$ 中的随机数，如果 $\xi>p_{ij}$ 成立， 则
+$(\xi>p_{ij})=1$, 否则为０ }
+
+\subsection{交换率相同的结果}
+
+\frame{ \frametitle{仿真结果}
+\begin{center}
+\movie[borderwidth,label=mymovie,width=3.5in,height=2.5in,poster]{}{./avi/eq.avi}
+\end{center}
+}
+
+\frame{ \frametitle{所有人的交换率相同的货币分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig12.pdf}　
+  \end{center}
+}
+
+\subsection{交换率不同}
+
+\frame{ \frametitle{不同位置的交换率分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig13.pdf}　
+  \end{center}
+}
+
+\frame{ \frametitle{仿真结果}
+\begin{center}
+\movie[borderwidth,label=mymovie,width=3.5in,height=2.5in,poster]{}{./avi/cellular.avi}
+\end{center}
+}
+
+\frame{ \frametitle{结果}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig14.pdf}　
+  \end{center}
+  }
+
+\frame{ \frametitle{所有人的交换率不同的货币分布}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{./figure/fig15.pdf}　
+  \end{center}
+  }
+
+
+\section{结论及模型优缺点}
+
+\frame{ \frametitle{结论} 本文成功地解决了封闭系统内的货币转移问题:
+\begin{itemize}
+\item 模型一中的改进规则四，对研究货币转移速度提供了借鉴依据;
+\item 模型二即元胞自动机模型则为研究局部区域出现的贫富差距提供了新的思路
+\end{itemize}
+}
+
+\frame{ \frametitle{模型优缺点}
+\begin{itemize}
+\item \textbf{优点}：本文不仅考虑已有的三种交易规则，还提出了第四种规则：一次交
+易中有多人参与交易的情况，并且得到了各个规则的货币量分布图。同
+时讨论了导致各个结果之间差异的原因。本文提出的元胞自动机模型，把实际中交易的局限性也很好的考虑进去，
+并且还发现交易概率的差异会导致局部贫穷或富裕。
+\item \textbf{优点}：结果都是宏观的，可能多少会忽略某个人或某个群体在交易过程中的变化情况。不
+过在本文的模型中，这种某个人或某个群体在交易过程中的变化情况是可以得到的。
+本文的元胞自动机模型，忽略了人口的流动性和主观能动性，这在一定程度上使得模型相对比较局限。
+
+\end{itemize}
+}
+
+
+
+%\include{./part/thebibliography}
+\include{./part/thankyou}
+
+\end{CJK*}
+\end{document}

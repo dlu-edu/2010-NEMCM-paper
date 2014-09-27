@@ -1,0 +1,39 @@
+%% 下面的代码用来读入Logo图象
+%\pgfdeclaremask{logomask}{pku-tower-mask}
+%\pgfdeclareimage[mask=logomask,height=1.5cm]{logo}{pku-tower}
+
+
+\pgfdeclaremask{beidamask}{./picture/beida-mark-mask}
+\pgfdeclareimage[mask=beidamask,height=0.25cm]{beida}{./picture/beida-mark}
+
+%\pgfdeclaremask{titlemask}{pku-lake2-mask}
+%\pgfdeclareimage[mask=titlemask,height=2.5cm]{title}{pku-lake2}
+
+%\logo{\vbox{\hbox{\hfill\pgfuseimage{logo}}}} %设置logo图标
+
+%% 定义一些自选的模板，包括背景、图标、导航条和页脚等，修改要慎重
+\beamertemplateshadingbackground{red!10}{structure!10}
+%\beamertemplatesolidbackgroundcolor{white!90!blue}
+\beamertemplatetransparentcovereddynamic
+\beamertemplateballitem
+\beamertemplatenumberedballsectiontoc
+%\beamertemplatelargetitlepage
+\beamertemplateboldpartpage
+
+\makeatletter
+\usefoottemplate{ %重新定义页脚，加入作者，单位，单位图标，和文档标题
+  \vbox{\tiny%
+    \hbox{%
+      \setbox\beamer@linebox=\hbox to\paperwidth{%
+        \hbox to.5\paperwidth{\hfill\tiny\color{white}\textbf{\insertshortauthor\quad\insertshortinstitute}\hskip.1cm\lower 0.35em\hbox{\pgfuseimage{beida}}\hskip.3cm}%
+        \hbox to.5\paperwidth{\hskip.3cm\tiny\color{white}\textbf{\insertshorttitle}\hfill}\hfill}%
+      \ht\beamer@linebox=2.625ex%
+      \dp\beamer@linebox=0pt%
+      \setbox\beamer@linebox=\vbox{\box\beamer@linebox\vskip1.125ex}%
+      \color{structure}\hskip-\Gm@lmargin\vrule width.5\paperwidth
+      height\ht\beamer@linebox\color{structure!70}\vrule width.5\paperwidth
+      height\ht\beamer@linebox\hskip-\paperwidth%
+      \hbox{\box\beamer@linebox\hfill}\hfill\hskip-\Gm@rmargin}
+  }
+}
+\makeatother

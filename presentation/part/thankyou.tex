@@ -1,0 +1,19 @@
+%%
+%% 最后加入一个显示Thank you!!!字样的动画
+%%
+
+\newcount\opaqueness
+\plainframe{
+  \itshape
+  \animate<1-10>
+  \Large
+
+  \only<1-10>{
+  \animatevalue<1-10>{\opaqueness}{10}{100}
+  \begin{colormixin}{\the\opaqueness!averagebackgroundcolor}
+    \begin{centering}
+      \Huge Thank You!!!\par
+    \end{centering}
+  \end{colormixin}
+  }
+}
